@@ -1,0 +1,312 @@
+id|name|standard|category|applicable|effort|comment|guidance|project_type_id
+1| All GUI’s will have a standard look and feel of the target Operating System (i.e. they will have a consistent look & feel)|Y|User Interface||||only for one target OS|1
+2|All ‘grids’ (lists) of data shown on screen will not have the functionality to be sorted and filtered by clicking on the appropriate column of that grid. |Y|User Interface|||||1
+3|All deletions to have a confirm (Y/N) for the delete. For web application, confirmation dialog shall be the browser default one.|Y|User Interface|||||1
+4|When navigating away from added/updated data, the system will prompt a confirm (Y/N) to save the data. For web application, confirmation dialog shall be the browser default one.|M|User Interface||||need more effort to handle dirty data if any|1
+5|All error messages should try to give suggestions of what the error is and if possible solution(s) to rectify the problem.|Y|User Interface|||||1
+6|When validating input files and importing data users will be supplied with the relevant details to diagnose issues i.e. what data is invalid and why it is incorrect.|M|User Interface||||need effort to implement validation rules and relevant details to diagnose issues|1
+7|All error messages of the system should be defined uniquely and maintained in a seperate file eg. in Resource file, conf file, etc.|Y|User Interface||||"not cover testing
+It mentions about system error logging. "|1
+8|"Vertical scrolling is allowable (but paging should be used for search results etc.)
+Horizontal scrolling should be avoided. "|Y|User Interface|||||1
+9|All controls or group of controls will have a text label|Y|User Interface||||Can use placeholders instead of labels|1
+10|Tab order on the GUI should flow from left to right, top to bottom by default but can be changed by localization if required (Please note that localization is not a NashTech Standard non-functional requirement). |Y|User Interface||||Only apply for standard controls.|1
+11|Use confirmations only when: |Y|User Interface|||||1
+12| There is a clear reason not to proceed and a reasonable chance that sometimes users won't.|Y|User Interface|||||1
+13| The action has significant consequences or cannot be easily undone.|Y|User Interface|||||1
+14| The action has consequences that users might not be aware of.|Y|User Interface|||||1
+15| Proceeding with the action requires users to make a choice that doesn't have a suitable default.|Y|User Interface|||||1
+16| Given the current context, users are likely to have performed an action in error.|Y|User Interface|||||1
+17|For desktop applications and websites: default support will be to a resolution of 1024x768 pixels.|Y|User Interface||||"suggest change resolution to 1366x768 pixels
+by default, HvN only support testing on 1 screen resolution"|1
+18|Where it is possible to calculate then Progress Bars / waiting indicators (depending on the system) should be used for lengthy processes to give the user an idea of what has completed – if not then the standard waiting indicator in the shape of a circling ring will be shown.|M|User Interface||||Simplest implementation is selected. And additional effort will be added when any complex progress bar needed.|1
+19|Any drop down lists will be in alphabetical or numerical order (if not stated otherwise within the functional requirements). |Y|User Interface|||||1
+20|Where a style guide is provided for the system then the UI will follow those guidelines.||User Interface||||It just a guidance, no further action required|1
+21|Where screen mock-ups, wireframes are provided for individual screens, these will be used in conjunction with the style guide.||User Interface||||It just a guidance, no further action required|1
+22|If nothing is provided than the NashTech Standard UI guidelines wil be applied. |Y|User Interface||||need to define NashTech Standard UI guidelines(Web & Mobile)|1
+23|The standard for all interfaces going out (from) the system will be via XML or JSON. The programming interface and all data items will be documented. |M|External Interfaces||||Additional effort is added when several and complex interfaces needed to be documented.|1
+24|For programming interfaces coming in to the system, the standard process will be to parse the data, report any errors at this point, then process the data and report on any errors at this point, unless there’s explicit requirement that the system does not need to check because of performance reasons.|Y|External Interfaces||||"only handle error messages,
+excluding analysing/invetigating interfaces "|1
+25|Each programming interface (including data items) is expected to be documented to a level that design can commence.|Y|External Interfaces|||||1
+26|The GUI will contain ‘plain English’ (therefore spell checked) and not ‘jargon’ that only certain staff can understand |Y|Usability|||||1
+27|No auto-completion of fields will be developed.|Y|Usability|||||1
+28|The system will try to minimise the number of clicks per GUI/transaction and increase the input capabilities per window. |Y|Usability|||||1
+29|Unknown system errors should be captured relevent to the failure part. Log trace should also be captured.|Y|Usability|||||1
+30|Where two requests are updating the same data. The first to commit will be successful and the conflicting update will be lost with the user informed the request failed. |M|Usability||||Need additional effort to handle conflicting issue properly(e.g. roll back transaction or refresh data)|1
+31|"For all website developments we assume thata ‘responsive design’ is required but it should be noted that this is not a commitment to support and validate all platforms/devices/browsers.
+Each device / browserthat the system needs to be supported on andtested for must be explicitly listed in the clients requirements and therefore used to estimate.
+"|M|Usability||||"don't use UI Common lib:
+30% (UI effort) for one iphone version, 20% (UI effort) for one ipad version, 30% (UI effort) for one Android phone version.
+
+Use UI Common Lib:
+15% (UI effort) for one iphone version, 10% (UI effort) for one ipad version, 15% (UI effort) for one Android phone version."|1
+32|The system will need to comply with the Data Protection Act. This act gives individuals the right to know what information is held about them. It provides a framework to ensure that personal information is handled properly; the Act has 2 main areas:|Y|Usability|||||1
+33|1. Anyone who processes personal information must comply with eight principles, which make sure that personal information is:|Y|Usability|||||1
+34|Fairly and lawfully processed|Y|Usability|||||1
+35|Processed for limited purposes|Y|Usability|||||1
+36|Adequate, relevant and not excessive|Y|Usability|||||1
+37|Accurate and up to date|Y|Usability|||||1
+38|Not kept for longer than is necessary|Y|Usability|||||1
+39|Processed in line with your rights|Y|Usability|||||1
+40|Secure|Y|Usability|||||1
+41|Not transferred to other countries without adequate protection|Y|Usability|||||1
+42|2. Individuals have the rights to find out what personal information is held on computer and most paper records.|Y|Usability|||||1
+43|This section is added as a reminder to the client about their responsibilities for the Data Protection Act; NashTech will not specifically write any code for the Data Protection Act requirements|Y|Usability||||Not relevant to development|1
+44|All normal data input, data output and content presenting application screens need to be ready to be interacted with within 3 seconds during normal load and normal client/server connection with following definitions|Y|Performance|||||1
+45|-Normal data input screen: screens with under 30 fields, interact directly with back end without complex data calculation, not interact with external systems and optionally save data directly into database, normal data input screen will not have big contents such as big image, video, audio files (less than 200KB in total size)|Y|Performance|||||1
+46|"- Normal data output screen: query directly from database without complex animations,without lookup, not go thru complex data processing or external server interaction, to display less than 50 rows and 10 columns and each row less than 100 character, without big contents (maximum content related size less than 200KB in total)
+- Data volume is not big"|Y|Performance||||no third party component involved, no chart calculation|1
+47|-Normal load: 30 concurrent user for non-load balanced normal server|Y|Performance|||||1
+48|"-Normal server/workstation: Intel Core i5, 8GB RAM, 500GB hard disk.
+"|Y|Performance||||upgrade to memory of 4GB RAM to 8GB RAM to adapt with company's standard.|1
+49|-Normal client/server connection: 500KB/s|Y|Performance||||bandwidth for 1 concurrent user|1
+50|"By default we will not do performance testing.
+"|Y|Performance|||| For larger systems application load testing must be undertaken and included by default with an additional cost. This testing needs to validate within the limits of the offshore development environment and focus on application bottlenecks and contention. It is not a system test.|1
+51|For other cases (complex processing, seeking, calculation, big report) there will be specific agreement after doing real benchmarking, although we will seek to optimise the code.|Y|Performance|||||1
+52|No single process shall consume inappropriate CPU usage. (Eg: a common request leads 100% CPU workload)|Y|Performance|||||1
+53|"For a Web interface (if applicable), it will be able to be accessed via standard PC/Laptops running the latest MS Windows OS and will be supported to run on the below three browser.
+- Chrome on Windows 8/10
+- MS Edge on Windows 10
+- Firefox on Windows 8/10
+Note that supporting more than the 3 browsers stated will require additional effort and cost. (which would be added to the estimate) "|M|Supportability||||"Default is to support three listed browsers. The effort is adjusted based on the specific need of each system.
+- The effort wil be reduced in case of less than three browsers required.
+- Additional effort will be considered for additonal browser on top of the listed ones.
+
+To support different browsers, we need to consider the below aspects:
+- Break Layout
+- Don't reconigze some JS functions or JS Objects.
+- Visithttp://caniuse.com/ site to check whether the newest features ofJS, HTML, CSSsupported by Chrome, Firefox, MS Edge.
+
+Guidance to calculate additional effort needed for additional browsers
+Don't use UI Common lib:
+- 40% (UI Effort) for one old IE(11) version.
+- 30% (UI Effort) for each one mordern browsers: Safari on MAC, Chrome on MAC, Firefox on MAC, Opera on Windows/MAC.
+
+Use UI Common Lib:
+ - 35% (UI Effort) for one old IE(11) version.
+ - 15% (UI Effort) for each one mordern browsers: Safari on MAC, Chrome on MAC, Firefox on MAC, Opera on Windows/MAC."|1
+54|For a Web interface (if applicable) and if we are required to support mobile browsers, by default we will support the following mobile browsers:|M|Supportability||||Need additional effort for testing and adaptation in development|1
+55| Safari Mobile for iPad (latest official iOS version at the project start date)|M|Supportability||||We assume the UI layout for iPad is the same layout with layout on desktop|1
+56| Android stock browser for Tablet 10 inches with Android OS (latest official version at the project start date)|M|Supportability|||||1
+57|Note that supporting mobile browsers is to provide a touch friendly UI only and a consistent view across desktop and mobile browsers, not to provide different screen layout or behaviour except differences that are inherited from the OS(s) (such as behaviour for form elements, date time pickers, dropdownsetc)|M|Supportability|||||1
+58|There is no requirement to be able to port the software onto additional Operating Systems or hardware platforms beyond an agreed single platform.|Y|Supportability|||||1
+59|All application code shall be documented so that it can easily be maintained and enhanced. (This may be by in-line code comments and/or separate documentation to the code).|Y|Supportability|||||1
+60|All code (Java, .NET, JS, PHP, Node, Swift, Objective C) will be written to the Nash Tech coding convention and standards (for which copies are available).|Y|Supportability||||add to the list some more programming languages which have already had Coding convention and standards such as JS, Node, Swift, Object C|1
+61|The system will try to ‘re-use’ existing services if possible. So as new Services are commissioned and introduced they will benefit from re-use of standard operations and architectural patterns utilised by the Solution. This reduces development and deployment time as well as significantly reducing risk.|Y|Supportability|||||1
+62|All interfaces shall have a supplied test harness to load and simulate all successful (just within boundary values) as well as failure events.|M|Supportability||||Need significant additional effort to write this harness test|1
+63|Interfaces supplied by the client they are required to be provided with a test harness.|Y|Supportability||||If they need to test harness for specific system/requirement, we can add the task and effort into the WBS|1
+64|If there are client dependencies then the application shall test / diagnose whether these are in place when it first executes and provide appropriate identification to the end users as well as creating an event in the server side logs for IT investigation.E.g. a smart client app within the system detects the .net framework is the wrong version, or browser detects an incompatible browser version of browser setting.|M|Supportability||||It should be scope of the deployment package (install files, scripts,...) and what can do should be written in assumptions.|1
+65|"All Software applications will be deliveried along with the relevant installation package and guideline document, without automated installation scripts and error trapping.
+There will be no automated update / upgrade for applications thru network.
+There will be no automated scripts for production deployment completely."|Y|Supportability|||||1
+66|The system can be required to be installed or upgraded locally via automated installation scripts or programs to avoid potential for human error; and these scripts need to contain the error trapping to aid installation diagnostics.|M|Supportability|||| Simplest implementation is selected. However, we need to consider the additional effort when any complex installation scripts or program to cover the automated installation.|1
+67| There shall be no version correction checking across servers|Y|Supportability|||||1
+68|Client installations shall be centrally manageable as far as possible.|M|Supportability||||Base on item 9|1
+69|The system shall be able to be uninstalled completely.|M|Supportability||||Base on item 9|1
+70|Where ever possible the systems shall be centrally configurable (e.g. to avoid editing ini files on multiple application servers)|M|Supportability|||| Simplest implementation is selected. However, we need to consider the additional effort when any complex configuration needed|1
+71|As a standard, the target unit test is 70% (50% coverage by automated unit test and 20% coverage by manual unit test). This is applied at the discretion of NashTech and not formally recorded.|Y|Supportability|||||1
+72|The system will log every key function call.(NB: There are free open source pieces of software available for this e.g. Log4J)|Y|Supportability|||||1
+73|Client internal systems software should be designed to be available 12 hours x 7 days per week *|Y|Reliability|||||1
+74|Web systems software shall be designed to have an annual availability from unplanned outages of 99.9%; that will handle errors without the system/process crashing – excluding all other external components (eg database management systems, hardware, file storage etc)|Y|Reliability|||||1
+75|Pure batch systems software shall be designed to have a successful run rate (i.e. full completion to end) of 99.9% that will handle errors without the process crashing. |Y|Reliability|||||1
+76|No on-line User Documentation or contextual (hover) Help will be provided.|Y|On-line User Documentation and Help System Requirements|||||1
+77|If required by client then a help button will be provided on each page that will link to a help text file (The text will be provided by the client).|M|On-line User Documentation and Help System Requirements||||In case of several and/or complex help needed.|1
+78|As a standard we will use open source and freeware modules (with clear approval from client) within the development and these will be documented in the :|Y|Purchased Components and Licensing|||||1
+79| Design Documents|Y|Purchased Components and Licensing|||||1
+80| Installation Notes|Y|Purchased Components and Licensing|||||1
+81| Release Notes|Y|Purchased Components and Licensing|||||1
+82|We will not use any purchases or licensed modules without the explicit consent from the client.|Y|Purchased Components and Licensing|||||1
+83|All Intellectual Property Rights (IPR) subsisting in or relating to the Deliverables and any other works or materials created by NashTech as a result of the Services, shall be owned (as between the parties) by the customer.|Y|Legal, Copyright, and Other Notices|||||1
+84|The system will be designed to support a single language, which will be British English; there will be no localisation.|Y|Applicable Standards|||||2
+85|- Validate input data to avoid XSS, SQL Injection, buffer overflow.|M|Input validation|||||2
+86|- Validate input data based on data type and range|M|Input validation|||||2
+87|- Use whitelist technicals to validate input|M|Input validation|||||2
+88|- Validate input data in front-end and back-end|M|Input validation|||||2
+89|- Escaping/ Encoding for all output data |M|Output Escaping/ Encoding||||Very minimal effort required for one output data field but given 600 pages with maybe up to 50-70 page templates it requires an add up to 10 mds effort of coding|2
+90|"- Before accessing the system users will authenticate themselves with a username and password.
+--> By default, it should be in functional requirement"|M|Authentication & Password Management|||||2
+91|- If either the username or password is incorrect, then the system will respond with ’The username and/or the password was incorrect, please re-try’. (i.e. the response will not tell specifically whether the username was wrong or the password was wrong).|Y|Authentication & Password Management|||||2
+92|- Plain-text passwords shall never be displayed when user enters |Y|Authentication & Password Management|||||2
+93|- Ensures that authenticated users have a robust and cryptographically secure association with their session|Y|Session Management|||||2
+94|- Use the server or framework’s session management controls whenever possible|Y|Session Management||||not load balance handling involvement|2
+95|-Session invalidation during authentication, re-authentication, logout, and switching from HTTPS to HTTP|M|Session Management|||||2
+96|- HTTP header tags like timeout, domain, path, http only, and secure should also be considered with regards to session management|M|Session Management|||||2
+97|- If using single-sign-on, make sure the application logout function calls the single-sign-on logout function|M|Session Management|||||2
+98|- Force user re-verification, not relying only on current session state, for high-risk user transactions to prevent CSRF|M|Session Management|||||2
+99|- Once an identity (subject) is authenticated, authorization is the decision process where requests to (create, read, update, delete, etc) a particular resource (object) should be granted or denied|M|Authorization & Access Control||||This should have been added when this estimate is finished. Simplest implementation is selected.|2
+100|- Access control is the method used for authorization enforcement with the most popular being role-based access control (RBAC)|M||||||2
+101|- Implement least privilege policy between all subjects and objects|M||||||2
+102|- Enforce timely authorization checks on every request (from both server and client side) to prevent “time of check”/”time of use” (TOC/TOU) attacks|M||||||2
+103|- Digital Certificates should be used in transactions for authentication purposes|M|Cryptographic Practices||||If applicable, this should have been added when this estimate is finished. Simplest implementation is selected.|2
+104|- Proper encryption should be used when handling sensitive data at any tier of the application|Y|Cryptographic Practices|||||2
+105|- Choose carefully whether “two-way” shared key symmetric encryption, “two-way” public/private key asymmetric encryption, or “one-way” salted hash encryption is best for each case|Y|Cryptographic Practices||||It is considered as agreement|2
+106|- Only use approved cryptographic modules for random number generators|Y|Cryptographic Practices||||It is considered as agreement|2
+107|- Error messages shall not disclose the internal working of the system (sensitive data, debug or stack trace information) in the production environment|Y|Error Handling, Auditing & Logging|||||2
+108|- The application should handle its own application errors and not rely on the server|Y|Error Handling, Auditing & Logging||||It is considered as agreement|2
+109|- Ensure audit logging controls are in place to log both successful/failure security events, especially authentication/authorization attempts and access to sensitive data with useful audit information based on the “Who/What/When/Where” principal|M|Error Handling, Auditing & Logging||||This should have been added when this estimate is finished. Simplest implementation is selected.|2
+110|- a defined list of data to be captured by the auditing functionality must be agreed with client.|Y|Error Handling, Auditing & Logging||||This should have been added when this estimate is finished. Simplest implementation is selected.|2
+111|- Audit data shall be held read only once created and not be changeable.|Y|Error Handling, Auditing & Logging||||Only applicable for end user. This should have been added when this estimate is finished. Simplest implementation is selected.|2
+112|- Logging information about stacktrace to easier find out issue in production environment|Y|Error Handling, Auditing & Logging|||||2
+113|- At a minimum all sensitive data (e.g. passwords, allpersonal data, ID’s, any financial/accounting data, credit/debit card information, banking information etc ) communicated shall be encrypted via 1024bit SSL|M|Data Protection||||Yes for SSL but project team will agree with client if it is 1024bit of another one|2
+114|- All sensitive data stored will be encrypted. (Sensitive data will be detailed in the functional requirements).|M|Data Protection||||Additional effort for searching and decrypting|2
+115|- All interfaces containing sensitive data will be encrypted to 1024bit and utilise certificate based authentication. |M|Data Protection||||Need to clarify the encryption rules. If applicable, this should have been added when this estimate is finished. Simplest implementation is selected.|2
+116|- Make sure all cached or temporary copies of sensitive data are protected from unauthorized access and get purged as soon as they are no longer required|Y|Data Protection|||||2
+117|- Not allow sensitive production data in non-production environments without Client's agreement|Y|Data Protection|||||2
+118|- Not include sensitive information in HTTP GET URL|Y|Data Protection|||||2
+119|- Using the following HTTP headers: Cache-Control: no-cache, no-store; Expires: 0 and Cache-Control: max-age=0 for all sensitive data requests|Y|Data Protection|||||2
+120|"- When transmitting sensitive information, at any tier of the application or network architecture, encryption-in-transit should be used with the following conditions:
+- SSL/TLS is used
+- Use a trusted certificate authority(CA) to generate public and private keys for PROD environment
+- Use in-house CA to generate public and private keys for Dev/Testing environment
+- The server only supports approved strong cipher modules"|M|Communication Security||||Yes for production environment only; for other environments need extra effort; 1 md for setting up SSL in production|2
+121|- Every piece of software from the OS, system components, software libraries, software framework, web servers are running the latest version and they are patched with latest security patches without any incompatible issues among the latest version and the versions used for Software development.|Y|System Configuration / Hardening|||||2
+122|- Lock down the server and remove any unnecessary files and functions. Isolate development environments from production environments|Y|System Configuration / Hardening|||||2
+123|- Use version control software so that all code changes deployed to production are reviewed|Y|System Configuration / Hardening||||Ensure all Cis should be under Version Control system|2
+124|- The database will be capable of being archived independently with application data|M|Database Security||||This should have been added when this estimate is finished. Simplest implementation is selected.|2
+125|- Use parameterized queries even if using a popular data persistence layer. |Y|Database Security|||||2
+126|- Try to avoid build dynamic SQL queries as much as possible|Y|Database Security||||In case we have to build dynamic SQL queries, so that we have to build it with database security in mind|2
+127|- Use the lowest possible level of privilege when accessing the database|M|Database Security||||2 md for reviewing and setting up all accessing priviledge to DB and file folders correctly|2
+128|- Lock down the database by turning off any unnecessary features|Y|Database Security||||pay attention when touching on PROD environment.|2
+129|- Connection strings and database passwords should not be hard coded within the application|Y|Database Security|||||2
+130|- Authentication is required for all file uploads|M|File Management|||||2
+131|- Limit file types, file size, and prevent any file types that may be interpreted by the web server as well as validate the file types by checking the file header|M|File Management||||2 mds for setting up at application level|2
+132|- Not send absolute file path to client|M|File Management|||||2
+133|"Text Alternatives
+Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language."||"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+134|Non-text content ||"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."||||Assume a description for the whole media content is provided by Client. Effort counted for the page displays the description in case of several media contents to be showed|3
+135| Controls, Input: If non-text content is a control or accepts user input, then it has a name that describes its purpose. |M|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+136|" Time-Based Media: If non-text content is time-based media, then text alternatives at least provide descriptive identification of the non-text content.
+"|M|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+137| Test: If non-text content is a test or exercise that would be invalid if presented in text, then text alternatives at least provide descriptive identification of the non-text content. |M|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+138| Sensory: If non-text content is primarily intended to create a specific sensory experience, then text alternatives at least provide descriptive identification of the non-text content. |M|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+139| CAPTCHA: If the purpose of non-text content is to confirm that content is being accessed by a person rather than a computer, then text alternatives that identify and describe the purpose of the non-text content are provided, and alternative forms of CAPTCHA using output modes for different types of sensory perception are provided to accommodate different disabilities. |Y|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."||||In case GOOGLE reCAPTCHA is applicable|3
+140| Decoration, Formatting, Invisible: If non-text content is pure decoration, is used only for visual formatting, or is not presented to users, then it is implemented in a way that it can be ignored by assistive technology. |Y|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."||||"By default, assistive technology must be applied, in this case it allows to not use it but need a mechanism to define how is ""pure decoration"". Can only cover when we are decision maker for creative design.
+Effort is based on creative design."|3
+141|"Time-based Media
+Provide alternatives for time-based media."||"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+142|"Audio-only and Video-only (Prerecorded):
+ Prerecorded Audio-only: An alternative for time-based media is provided that presents equivalent information for prerecorded audio-only content.
+ Prerecorded Video-only: Either an alternative for time-based media or an audio track is provided that presents equivalent information for prerecorded video-only content.
+ Exceptions
+If the content is itself an alternative (you don’t have to provide a transcript of the audio track you provided to explain the silent video you used).
+"|M|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."||||Depend on the time based media used, frequently and complexity, we will calculcate the effort added|3
+143|"Adaptable
+Create content that can be presented in different ways (for example simpler layout) without losing information or structure."||"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+144|Info and Relationships: Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text|Y|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+145|Meaningful Sequence: When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined. |Y|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+146|"Distinguishable
+Make it easier for users to see and hear content including separating foreground from background."||"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+147|Use of Color: Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element. |M|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."||||Need a little effort to cover where and when it is applicable.|3
+148|Audio Control: If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.|M|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."||||Need effort to manipulate the audio content|3
+149|"Contrast (Minimum)
+The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:
+Large Text: Large-scale text and images of large-scale text have a contrast ratio of at least 3:1;
+Incidental: Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.
+Logotypes: Text that is part of a logo or brand name has no minimum contrast requirement.
+
+"|Y|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."|||||3
+150|"Resize text (Level 2A)
+Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality"|M|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."||||Need effort to arrange the content and layout in case of small or big text sizes.|3
+151|"Images of Text (Level 2A)
+If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text except for the following:Hide full description
+Customizable: The image of text can be visually customized to the user's requirements;
+Essential: A particular presentation of text is essential to the information being conveyed.
+Note: Logotypes (text that is part of a logo or brand name) are considered essential.
+"|M|"Perceivable
+Information and user interface components must be presentable to users in ways they can perceive."||||Need effortto design and arrange the layout accordingly. We need to apply Text Replacement technique in html/css code, so it takes effort to implement it. |3
+152|"Keyboard Accessible
+Make all functionality available from a keyboard."||"Operable
+User interface components and navigation must be operable."|||||3
+153|Keyboard (Level A): All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints. |M|"Operable
+User interface components and navigation must be operable."||||Need effortto handle keyboard accessibility to make sure user can fully use the website with the keyboard|3
+154|No Keyboard Trap (Level A): If keyboard focus can be moved to a component of the page using a keyboard interface, then focus can be moved away from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard exit methods, the user is advised of the method for moving focus away|M|"Operable
+User interface components and navigation must be operable."||||Need time to make sure the keyboard can't get stuck anywhere on the website|3
+155|"Enough Time
+Provide users enough time to read and use content."||"Operable
+User interface components and navigation must be operable."|||||3
+156|"Pause, Stop, Hide: For moving, blinking, scrolling, or auto-updating information , it starts automatically, and lasts more than five seconds, and is presented in parallel with other content
+"|M|"Operable
+User interface components and navigation must be operable."||||Need effort to implement the pause, stop or hide function|3
+157|"Seizures
+Do not design content in a way that is known to cause seizures."||"Operable
+User interface components and navigation must be operable."|||||3
+158|Three Flashes or Below Threshold: Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds|Y|"Operable
+User interface components and navigation must be operable."|||||3
+159|"Navigable
+Provide ways to help users navigate, find content, and determine where they are."||"Operable
+User interface components and navigation must be operable."|||||3
+160|Bypass Blocks: A mechanism is available to bypass blocks of content that are repeated on multiple Web pages|Y|"Operable
+User interface components and navigation must be operable."|||||3
+161|Page Titled: Web pages have titles that describe topic or purpose|Y|"Operable
+User interface components and navigation must be operable."|||||3
+162|Focus Order: If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.|Y|"Operable
+User interface components and navigation must be operable."|||||3
+163|Link Purpose (In Context): The purpose of each link can be determined from the link text alone or from the link text together with its programmatically determined link context, except where the purpose of the link would be ambiguous to users in general. |Y|"Operable
+User interface components and navigation must be operable."|||||3
+164|Multiple Ways: More than one way is available to locate a Web page within a set of Web pages except where the Web Page is the result of, or a step in, a process.|M|"Operable
+User interface components and navigation must be operable."||||Need effortto add an HTML sitemap page and include a search function on every page and provide a clear and consistent main navigation menu|3
+165|Headings and Labels: Headings and labels describe topic or purpose.|Y|"Operable
+User interface components and navigation must be operable."||||applicable only for the input with label|3
+166|Focus Visible: Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.|M|"Operable
+User interface components and navigation must be operable."||||Need effortto make keyboard focus visible on all elements(menu items, form fields, links)|3
+167|"Readable
+Make text content readable and understandable."||"Understandable
+Information and the operation of user interface must be understandable."|||||3
+168|Language of Page: The default human language of each Web page can be programmatically determined|Y|"Understandable
+Information and the operation of user interface must be understandable."|||||3
+169|Language of Part: The human language of each passage or phrase in the content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text.|M|"Understandable
+Information and the operation of user interface must be understandable."||||Small effort needed per each , but it may be kept repeatedly in several places, when additional effort needed|3
+170|"Predictable
+Make Web pages appear and operate in predictable ways."||"Understandable
+Information and the operation of user interface must be understandable."|||||3
+171|On Focus: When any component receives focus, it does not initiate a change of context|Y|"Understandable
+Information and the operation of user interface must be understandable."|||||3
+172|On Input: Changing the setting of any user interface component does not automatically cause a change of context unless the user has been advised of the behavior before using the component|Y|"Understandable
+Information and the operation of user interface must be understandable."|||||3
+173|Consistent Navigation: Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user.|Y|"Understandable
+Information and the operation of user interface must be understandable."||||related to UI/UX design|3
+174|Consistent Identification: Components that have the same functionality within a set of Web pages are identified consistently.|Y|"Understandable
+Information and the operation of user interface must be understandable."||||related to UI/UX design|3
+175|"Input Assistance
+Help users avoid and correct mistakes."||"Understandable
+Information and the operation of user interface must be understandable."|||||3
+176|Error Identification: If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text. |Y|"Understandable
+Information and the operation of user interface must be understandable."|||||3
+177|Labels or Instructions: Labels or instructions are provided when content requires user input|M|"Understandable
+Information and the operation of user interface must be understandable."||||Depends on the complexity of labels and Instructions need|3
+178|Error Suggestion: If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content.|M|"Understandable
+Information and the operation of user interface must be understandable."||||Depends on the complexity of error suggestion need|3
+179|"Error Prevention: (Legal, Financial, Data)
+For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses,"|M|"Understandable
+Information and the operation of user interface must be understandable."||||Depends on the complexity of error prevention need|3
+180|"Compatible
+Maximize compatibility with current and future user agents, including assistive technologies."||"
+Robust
+Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
+"|||||3
+181|Parsing: In content implemented using markup languages, elements have complete start and end tags, elements are nested according to their specifications, elements do not contain duplicate attributes, and any IDs are unique, except where the specifications allow these features|Y|"
+Robust
+Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
+"||||need additional effort for single page application with duplicate id is used. |3
+182|Name, Role, Value: For all user interface components (including but not limited to: form elements, links and components generated by scripts), the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically set; and notification of changes to these items is available to user agents, including assistive technologies. |M|"
+Robust
+Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
+"||||effort needed depends on number of controls in a web page|3

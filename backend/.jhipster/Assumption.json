@@ -1,0 +1,30 @@
+{
+    "name": "Assumption",
+    "fields": [
+        {
+            "fieldName": "content",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "workItem",
+            "otherEntityName": "workItem",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190101123350",
+    "entityTableName": "assumption",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

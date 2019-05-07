@@ -1,0 +1,63 @@
+<div bsModal #editQuotationModel="bs-modal" class="modal fade" tabindex="-1" aria-labelledby="createUserModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" [formGroup]="editForm" #creQuotation="ngForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{ "Edit Quotation" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-12" style="padding: 0px">
+                        <table class="table">
+                            <thead>
+                                <tr>    
+                                    <th>No.</th>
+                                    <th>Task name</th>
+                                    <th>Coding Effort</th>
+                                    <th>Note</th>
+                                    <th>Assumption</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let item of quoctationById">    
+                                    <!-- id of quotation -->
+                                    <input style="display: none" [value]="item.id" matInput placeholder="id quoctationById" formControlName="id">
+                                    <!-- id of work item  -->
+                                    <tr style="display: none"> <input  [(ngModel)]="item.id" formControlName="id"></tr> 
+
+                                    <ng-container formArrayName="wordItemDTOList"  *ngFor="let items of item?.wordItemDTOList; let i = index" >
+                                        <tr  *ngFor="let arr of formData.controls; let i = index" class="panel panel-default" [formGroupName]="i" >    
+                                            <td style="display: none"><input [value]="items.no"               [(ngModel)]="items.no" matInput placeholder="No" formControlName="no"></td>
+                                            <td>{{i + 1}}</td>
+                                            <td><input [value]="items.taskName"         [(ngModel)] ="items.taskName" matInput placeholder="taskName" formControlName="taskName"></td>
+                                            <td><input [value]="items.codingErffort"    [(ngModel)]="items.codingErffort" matInput placeholder="codingErffort" formControlName="codingErffort"></td>
+                                            <td><input [value]="items.assumptionNote"   [(ngModel)] ="items.assumptionNote" matInput placeholder="assumptionNote" formControlName="assumptionNote"></td>
+                                            <td><input [value]="items.assumptionConten" [(ngModel)] ="items.assumptionConten" matInput placeholder="assumptionConten" formControlName="assumptionConten"></td>
+                                            <td><input [value]="items.indayte"  [(ngModel)] ="items.indayte" matInput placeholder="indayte" formControlName="indayte"></td>
+                                            <td><button class="btn btn-danger" type="button" (click)="delWorkItem(items.no)"> x</button></td>
+                                        </tr>
+                                    </ng-container>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-secondary waves-effect" (click)="close()">
+                        Close
+                    </button>
+                    <button  [disabled]="creQuotation.invalid" class="btn btn-primary" type="submit" style="cursor: default">
+                        Save changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<pre>Edit Form: {{editForm.value | json}}</pre>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Project.
+    -->
+    <changeSet id="20181211063435-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="size_id_id"
+                                 baseTableName="project"
+                                 constraintName="fk_project_size_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="size"/>
+
+        <addForeignKeyConstraint baseColumnNames="tech_id_id"
+                                 baseTableName="project"
+                                 constraintName="fk_project_tech_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tech"/>
+
+        <addForeignKeyConstraint baseColumnNames="projects_id"
+                                 baseTableName="wbs"
+                                 constraintName="fk_project_work_item_id_projects_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="project"/>
+        <addForeignKeyConstraint baseColumnNames="work_item_ids_id"
+                                 baseTableName="wbs"
+                                 constraintName="fk_project_work_item_id_work_item_ids_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="work_item"/>
+        
+        <addForeignKeyConstraint baseColumnNames="projects_id"
+                                 baseTableName="project_etrac_effort_id"
+                                 constraintName="fk_project_etrac_effort_id_projects_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="project"/>
+        <addForeignKeyConstraint baseColumnNames="etrac_effort_ids_id"
+                                 baseTableName="project_etrac_effort_id"
+                                 constraintName="fk_project_etrac_effort_id_etrac_effort_ids_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="extrac_effort"/>
+        
+        <addForeignKeyConstraint baseColumnNames="projec_type_id_id"
+                                 baseTableName="project"
+                                 constraintName="fk_project_projec_type_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="project_type"/>
+
+    </changeSet>
+</databaseChangeLog>

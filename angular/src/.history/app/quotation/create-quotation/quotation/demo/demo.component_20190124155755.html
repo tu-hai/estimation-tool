@@ -1,0 +1,48 @@
+<form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="array">
+    <div
+      *ngFor="let arr of testForm.get('array').controls; let i = index"
+      class="panel panel-default"
+      [formGroupName]="i"
+    >
+      <div class="panel-heading">
+        <span>Task name {{ i + 1 }}</span>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="taskname" />
+        </div>
+        <div class="form-group">
+          <label>Coding Effort</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="codingEffort"
+          />
+        </div>
+      </div>
+      <button class="btn btn-danger" type="button" (click)="removeTask(i)">
+        x
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="indexSelected = i"
+        type="submit"
+        style="cursor: default"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+
+  <div class="margin-20">
+    <button
+      class="btn btn-primary"
+      type="button"
+      (click)="addTask()"
+      style="cursor: default"
+    >
+      Add another Task +
+    </button>
+  </div>
+</form>

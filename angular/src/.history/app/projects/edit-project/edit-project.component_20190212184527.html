@@ -1,0 +1,87 @@
+<div bsModal #editProjectModal="bs-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+            <form  #editProject="ngForm" *ngIf="active" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>{{ "Update Info" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                        <li class="active"><a href="#user-details" data-toggle="tab">Update a project</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane animated fadeIn active">
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-6" style="display: none">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput [(ngModel)]="project.id" placeholder="ID" formControlName="id" type="number" readonly>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput [(ngModel)]="project.name" placeholder="Name" formControlName="name" type="text" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput [(ngModel)]="project.dateStrart" placeholder="Date Start" formControlName="dateStrart" type="date" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                                <input matInput  [(ngModel)]="project.dateEnd" placeholder="Date End" formControlName="dateEnd" type="date" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6" formGroupName="sizeId">
+                                    <mat-form-field >
+                                        <mat-select  [(value)]="selected" placeholder="Size" formControlName="id" required>
+                                            <mat-option value="1">Small</mat-option>
+                                            <mat-option value="2">Medium</mat-option>
+                                            <mat-option value="3">Big</mat-option>
+                                        </mat-select>
+                                     
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-6" formGroupName="projecTypeId">
+                                    <mat-form-field >
+                                        <mat-select  [(value)]="selected" [(ngModel)]="project.projecTypeId.id" value="project.projecTypeId.technogory"  placeholder="Technology" 
+                                            required>
+                                            <mat-option value="1">Web Content</mat-option>
+                                            <mat-option value="2">Web Application</mat-option>
+                                            <mat-option value="3">Web Content</mat-option>
+                                        </mat-select>
+                                       
+                                    </mat-form-field>
+                                   
+                                </div>
+                            </div>
+                     
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" (click)="close()">
+                        Cance
+                    </button>
+                    <button [disabled]="editProject.invalid" class="btn btn-success waves-effect">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

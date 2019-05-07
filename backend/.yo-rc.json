@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "asia.ncc.estimation.tool",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.7.0",
+    "applicationType": "monolith",
+    "baseName": "EstimationTool",
+    "packageName": "asia.ncc.estimation.tool",
+    "packageFolder": "asia/ncc/estimation/tool",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "OGYxNTgwZGEyMGQ5Y2FkN2Y5NmUxOGIxMTQ1NDk3NDlkMzcyZDI3MDAxOTg0ZTRjOGU3MmQyZmE3ODI1Y2ZmMGY4NjUyOGIyNGE1NmM5YTkyNDVhOWUyYWNmYWU0NTFiZWM1M2FmMzA5ZmE0NGFjNWY0NDg3MGU3YjcxODRlZWE=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "skipClient": true
+  }
+}

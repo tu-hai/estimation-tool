@@ -1,0 +1,6 @@
+entity FilePdf{
+    name String,
+	location String,
+	dateCreate LocalDate,
+	idCustomer Long
+}

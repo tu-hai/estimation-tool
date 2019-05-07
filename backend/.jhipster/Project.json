@@ -1,0 +1,72 @@
+{
+    "name": "Project",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateStrart",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateEnd",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "sizeId",
+            "otherEntityName": "size",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "project"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "techId",
+            "otherEntityName": "tech",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "project"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "quotation",
+            "otherEntityName": "quotation",
+            "otherEntityRelationshipName": "projectID"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "projectId",
+            "relationshipName": "workItemId",
+            "otherEntityName": "workItem",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "projectId",
+            "relationshipName": "etracEffortId",
+            "otherEntityName": "extracEffort",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "projecTypeId",
+            "otherEntityName": "projectType",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181211063435",
+    "entityTableName": "project",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

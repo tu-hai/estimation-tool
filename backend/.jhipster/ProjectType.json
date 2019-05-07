@@ -1,0 +1,40 @@
+{
+    "name": "ProjectType",
+    "fields": [
+        {
+            "fieldName": "decription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "technogory",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "project",
+            "otherEntityName": "project",
+            "otherEntityRelationshipName": "projecTypeId"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "nFR",
+            "otherEntityName": "nFR",
+            "otherEntityRelationshipName": "projectType"
+        }
+    ],
+    "changelogDate": "20181211063436",
+    "entityTableName": "project_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

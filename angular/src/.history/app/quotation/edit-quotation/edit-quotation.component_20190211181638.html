@@ -1,0 +1,67 @@
+<div bsModal #editQuotationModel="bs-modal" class="modal fade" tabindex="-1" aria-labelledby="createUserModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" [formGroup]="editForm" #creQuotation="ngForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{ "Edit Quotation" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-12" style="padding: 0px">
+                        <table class="table">
+                            <thead>
+                                <tr>    
+                                    <th>No.</th>
+                                    <th>Task name</th>
+                                    <th style="width: 30%">Coding Effort</th>
+                                    <th>Note</th>
+                                    <th>Assumption</th>
+                                    <!-- <th>Date</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- id of quotation -->
+                                <input style="display: none" name="id" matInput  formControlName="id">
+                                <ng-container formArrayName="wordItemDTOList"> 
+                                    <tr  *ngFor="let item of editForm.get('wordItemDTOList')['controls']; let i = index"  [formGroupName]="i" >    
+                                        <td><input formControlName="no" matInput></td>
+                                        <td><mat-form-field>
+                                            <input matInput formControlName="taskName">
+                                        </mat-form-field></td>
+                                        <td style="width: 30%"><mat-form-field>
+                                            <input matInput formControlName="codingErffort">
+                                        </mat-form-field></td>
+                                        <td><mat-form-field>
+                                            <input matInput formControlName="assumptionNote">
+                                        </mat-form-field></td>
+                                        <td><mat-form-field>
+                                            <input matInput formControlName="assumptionConten">
+                                        </mat-form-field></td>
+                                        <td style="display: none"><mat-form-field>
+                                            <input matInput formControlName="indayte">
+                                        </mat-form-field></td>
+                                        <td><button class="btn btn-danger" type="button" (click)="delWorkItem(item.no)"> x</button></td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-secondary waves-effect" (click)="close()">
+                        Close
+                    </button>
+                    <button  [disabled]="creQuotation.invalid" class="btn btn-primary" type="submit" style="cursor: default">
+                        Save changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <pre>Edit Form: {{editForm.value | json}}</pre> -->

@@ -1,0 +1,11 @@
+.footer {
+    min-height: 30px;
+}
+.page{
+    text-align: center;
+   margin-left: 40%;
+}
+.createBnt {
+    position: fixed;
+    bottom: 0;
+}

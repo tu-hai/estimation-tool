@@ -1,0 +1,97 @@
+<div bsModal #createCustumerModal="bs-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" [formGroup]="addForm" #createCustumer="ngForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>{{ "Create Custumer" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                        <li class="active"><a href="#user-details" data-toggle="tab">Add Custumer</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane animated fadeIn active" id="user-details">
+
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="name" ngModel pattern="[a-zA-Z ]*" formControlName="name" type="text" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Company" formControlName="company" type="text" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Phone number" formControlName="tel" type="text" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="email" formControlName="email" type="email" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <mat-form-field class="example-full-width">
+                                            <input type="text" placeholder="Country"  matInput [(ngModel)]="myControl" aria-label="Number" formControlName="country"
+                                                [matAutocomplete]="auto" required>
+                                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                                    {{option}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                        </mat-form-field>
+                                    </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Bill Address" formControlName="billaddress"
+                                                type="text" class="validate form-control" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Skype" formControlName="skypeid" type="text"
+                                                class="validate form-control">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" (click)="close()">
+                        Cance
+                    </button>
+                    <button [disabled]="createCustumer.invalid" type="submit" class="btn btn-primary waves-effect">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{ 'Quotation' | localize }}
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <div class="col-sm-6">
+                    <div class="form-group" class="table-striped">
+                        <label for="exampleFormControlSelect1">Projects Select</label>
+                        <select class="form-control">
+                            <option *ngFor=" let prj of projectList"  id="myInput" onchange="myFunction()" [value]="prj.id">{{prj.name}} </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group" class="table-striped">
+                        <label for="exampleFormControlSelect1">Customer Select</label>
+                        <select class="form-control">
+                            <option *ngFor=" let Cus of custumerList" [value]="Cus.id">{{Cus.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- ********************************************** -->
+                <form ng-submit="submit()">
+                    <table  id="myTable" class="table table-striped table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Project Name</th>
+                                <th>Custumer Name</th>
+                                <th>Price Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let item of quotations ; let i = index;">
+                                <tr>
+                                    <td>{{i + 1}}</td>
+                                    <td>{{item.projectID.name}}</td>
+                                    <td>{{item.customerId.name}}</td>
+                                   <td></td>
+                                    <td class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
+                                            role="button" aria-haspopup="true" aria-expanded="false">
+                                            <i class="material-icons">menu</i>
+                                        </a>
+                                        <ul class="dropdown-menu pull-right">
+                                            <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="detailQuotation(item)"><i
+                                                        class="material-icons">add</i>{{ 'View Detail' | localize }}</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </form>
+                <!-- ******************************************************** -->
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right"
+                    (click)="createQuotation()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-create-quotation (value)="updateTable($event)" #createQuotationModel></app-create-quotation>
+<app-detail-quotation #detailQuotationModel></app-detail-quotation>

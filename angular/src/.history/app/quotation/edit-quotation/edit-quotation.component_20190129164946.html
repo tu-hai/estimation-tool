@@ -1,0 +1,64 @@
+<div bsModal #editQuotationModel="bs-modal" class="modal fade" tabindex="-1" aria-labelledby="createUserModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" [formGroup]="createForm" #creQuotation="ngForm"  #createQuotation (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{ "Edit Quotation" | localize }}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                <div class="col-sm-12" style="padding: 0px">
+                    <div class="col-sm-12" style="padding: 0px">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Task name</th>
+                                    <th>Coding Effort</th>
+                                    <th>Note</th>
+                                    <th>Assumption</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let arr of formData.controls; let i = index" class="panel panel-default" [formGroupName]="i">
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="note" formControlName="note">
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field>
+                                            <input matInput placeholder="assumption" formControlName="content" type="text">
+                                        </mat-form-field>
+                                    </td>
+                    
+                                    <td>
+                                        <button class="btn btn-danger" type="button" (click)="removeTask(i)">
+                                            x
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                     </div>
+                   </div>
+                    <div class="margin-20">
+                        <button class="btn btn-primary" type="button" (click)="addTask()" style="cursor: default">
+                           +
+                        </button>
+                        <button [disabled]="creQuotation.invalid" class="btn btn-success save" (click)="indexSelected" type="submit" style="cursor: default">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div bsModal #createProjectModal="bs-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>{{ "Create new Project" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs tab-nav-right">
+                        <li class="active"><a href="#user-details" data-toggle="tab">Add Project</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane animated fadeIn active" id="user-details">
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input formControlName="name" id="name" type="text" class="validate form-control"
+                                                placeholder="Project Name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input formControlName="dateStrart" id="dateStrart" type="text" class="validate form-control"
+                                                placeholder="Date Start" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input formControlName="dateEnd" type="text" name="date" class="validate form-control"
+                                                placeholder="Date End" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div formGroupName="sizeId" class="form-line">
+                                            <label for="id">Size</label>
+                                            <select formControlName="id" type="number" name="id" class="validate form-control"
+                                                placeholder="Size" required>
+                                                <option value="1">Small</option>
+                                                <option value="2">Medium</option>
+                                                <option value="3">Big</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div formGroupName="projecTypeId" class="form-line">
+                                            <label for="id">Technology</label>
+                                            <select formControlName="id" type="number" name="id" class="validate form-control"
+                                                placeholder="Technology" required>
+                                                <option value="1">Web</option>
+                                                <option value="2">Android</option>
+                                                <option value="3">iOS</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" (click)="close()">
+                        Cance
+                    </button>
+                    <button type="button" class="btn btn-success waves-effect">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

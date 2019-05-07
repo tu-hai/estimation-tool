@@ -1,0 +1,19 @@
+{
+    "name": "Size",
+    "fields": [
+        {
+            "fieldName": "nameSize",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181218055246",
+    "entityTableName": "size",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

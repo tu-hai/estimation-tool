@@ -1,0 +1,7 @@
+.footer {
+    min-height: 30px;
+}
+.pagination{
+    left: 50%; 
+    transform: translateX(-50%) translateY(-50%);
+}

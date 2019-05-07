@@ -1,0 +1,26 @@
+{
+    "name": "NFR",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "projectType",
+            "otherEntityName": "projectType",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181211063441",
+    "entityTableName": "nfr",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

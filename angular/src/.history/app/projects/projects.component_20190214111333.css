@@ -1,0 +1,14 @@
+.footer {
+    min-height: 30px;
+}
+.page{
+    text-align: center;
+   margin-left: 40%;
+}
+.footer {
+    position: fixed;
+    bottom: 20px;
+}
+.create {
+    float: right;
+}

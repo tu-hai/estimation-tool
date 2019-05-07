@@ -1,0 +1,8 @@
+.form-control:focus {
+    border-bottom: 3px solid orange;
+}
+.email{
+    input:invalid {
+        border: 1px solid red;
+    }
+}

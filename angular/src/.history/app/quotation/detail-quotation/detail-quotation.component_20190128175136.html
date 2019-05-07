@@ -1,0 +1,151 @@
+<div bsModal #detailQuotationModel="bs-modal" class="modal" tabindex="-1" aria-labelledby="detailQuotationModel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+
+        <div #modalContent class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{ "Quotation Detail" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div style=" padding: 5px 0px 5px 0px;"></div>
+                    <form>
+                        <table class="table table-striped table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Task Name</th>
+                                    <th>Hours</th>
+                                    <th>Day</th>
+                                    <th>Note</th>
+                                    <th>Assamtation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let item of quoctationById; let i = index">     
+                                <!-- <ng-container *ngFor="let items of item?.projectId.workItemIds; let i = index"> -->
+                                    <tr>
+                                        <td>{{i + 1}}</td>
+                                        <td>{{items.taskname}}</td>
+                                        <td>{{items.codingEffort}}</td>
+                                        <td>{{items.codingEffort / 8}}</td>
+                                    </tr>
+                                <!-- </ng-container> -->
+                            </ng-container>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button style="float: right" type="button" class="btn btn-success waves-effect" (click)="close()">
+                                Close
+                            </button>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sendMailModel">
+                        Send To Custumer
+                    </button>
+                    <button style="margin-left: 10px" type="button" class="btn btn-primary" data-toggle="modal" data-target="#PDFModel">
+                           Export PDF
+                    </button>
+                        
+                    
+                    <!--Send mail Modal -->
+                    <div style="margin-left: 15%" class="modal fade" id="sendMailModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" style="position: fixed" role="document">
+                                <div class="modal-content">
+                                    <form [formGroup]="addForm" #createMail="ngForm" (ngSubmit)="onSubmit()">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Send to Custumer</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                                <li class="active"><a href="#user-details" data-toggle="tab">Create Mail</a></li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane animated fadeOut active" id="user-details">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group form-float">
+                                                            <mat-form-field class="example-full-width">
+                                                                <input matInput  placeholder= "Custumer" formControlName="customerId" type="text" class="validate form-control" required>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group form-float">
+                                                            <mat-form-field class="example-full-width">
+                                                                <input matInput placeholder="Email Subject" formControlName="subbject" type="text" class="validate form-control" required>
+                                                            </mat-form-field>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <mat-form-field style="width: 100%" class="example-full-width">
+                                                            <textarea style="width: 100%" matInput placeholder="Email..." formControlName="text"></textarea>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button [disabled]="createMail.invalid" type="submit" class="btn btn-primary waves-effect">
+                                                Send
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                    <!-- send mail -->
+
+                    <!-- pdfModel -->
+                    <div style="margin-left: 18%" class="modal fade" id="PDFModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" style="position: fixed" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Download PDF</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table table-striped table-bordered table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>PDF type</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>WBS & ExtraEffort</td>
+                                                <td>Download</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>NFR</td>
+                                                <td>Download</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- pdf -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

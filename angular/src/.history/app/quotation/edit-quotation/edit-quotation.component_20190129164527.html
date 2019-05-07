@@ -1,0 +1,64 @@
+<div bsModal #editQuotationModel="bs-modal" class="modal fade" tabindex="-1" aria-labelledby="createUserModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" [formGroup]="createForm" #creQuotation="ngForm"  #createQuotation (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{ "Edit Quotation" | localize }}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                <div class="col-sm-12" style="padding: 0px">
+                        <form>
+                                <table class="table table-striped table-bordered table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Task Name</th>
+                                            <th>Hours</th>
+                                            <th>Day</th>
+                                            <th>Note</th>
+                                            <th>Assamtation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ng-container *ngFor="let item of quoctationById">     
+                                        <ng-container *ngFor="let items of item?.wordItemDTOList; let i = index">
+                                            <tr>
+                                                <td>{{i + 1}}</td>
+                                                <td>{{items.taskName}}</td>
+                                                <td>{{items.codingErffort}}</td>
+                                                <td>{{items.codingEffort / 8}}</td>
+                                                <td>{{items.assumptionNote}}</td>
+                                                <td>{{items.assumptionConten}}</td>
+                                            </tr>
+                                        </ng-container>
+                                    </ng-container>
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <button style="float: right" type="button" class="btn btn-success waves-effect" (click)="close()">
+                                        Close
+                                    </button>
+                                </div>
+                            </form>
+                </div>
+                    <div class="margin-20">
+                        <button class="btn btn-primary" type="button" (click)="addTask()" style="cursor: default">
+                           +
+                        </button>
+                        <button [disabled]="creQuotation.invalid" class="btn btn-success save" (click)="indexSelected" type="submit" style="cursor: default">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+entity Project {
+    name String,
+    dateStrart LocalDate,
+    dateEnd LocalDate
+}
+entity ProjectType{
+    decription String,
+    technogory String,
+    name String
+}
+entity Customer{
+    name String ,
+    country String 
+}
+entity Quotation{
+    projectId String,
+    statDate LocalDate,
+    endDate   LocalDate
+}
+entity ExtracEffort{
+    name String ,
+    decription String ,
+}
+entity WorkItem{
+    note String,
+    actualeffort String ,
+	taskname String,
+ 	codingEffort Long,
+ 	indates Integer
+}
+entity NFR{
+    name String
+}
+entity Size{
+    nameSize String 
+}
+entity Tech{
+    name String,
+    description String,
+    techContact  String 
+    
+}
+relationship ManyToMany{
+ Project{workItemId} to WorkItem{projectId}
+}
+relationship OneToMany {
+	 ProjectType to Project {projecTypeId}
+}
+relationship ManyToMany{
+	Project{etracEffortId} to ExtracEffort{projectId}	
+}
+relationship OneToMany{
+	ProjectType to NFR{projectType} 
+}
+relationship OneToMany{
+	 Customer to Quotation{customerId} 
+		Project to Quotation{projectID} 
+}
+relationship OneToOne{
+	Project{sizeId} to Size
+}
+relationship OneToOne{
+	Project{techId}  to Tech
+}
+
+entity Assumption{
+	content String,
+    note String 
+}
+
+relationship OneToMany{
+	WorkItem to Assumption{workItem}
+}
+

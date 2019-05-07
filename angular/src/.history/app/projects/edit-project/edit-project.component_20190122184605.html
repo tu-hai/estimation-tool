@@ -1,0 +1,101 @@
+<div bsModal #editProjectModal="bs-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>{{ "Update Info" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                        <li class="active"><a href="#user-details" data-toggle="tab">Update a project</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane animated fadeIn active">
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input [(ngModel)]="project['id']" formControlName="id" type="number" class="validate form-control"
+                                                placeholder="id" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input [(ngModel)]="project['name']"  formControlName="name" id="name" type="text" class="validate form-control"
+                                                placeholder="Project Name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input [(ngModel)]="project.dateStrart" formControlName="dateStrart" id="dateStrart" type="text" class="validate form-control"
+                                                placeholder="Date Start" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input  [(ngModel)]="project.dateEnd" formControlName="dateEnd" type="text" name="date" class="validate form-control"
+                                                placeholder="Date End" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <div FormGroupName="sizeId">
+
+                                                    <label for="id">Size</label>
+                                                    <select [(ngModel)]="project.sizeId.nameSize" formControlName="id" class="validate form-control"
+                                                        placeholder="Size" required>
+                                                        <option value="1">Small</option>
+                                                        <option value="2">Medium</option>
+                                                        <option value="3">Big</option>
+                                                    </select>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div formGroupName="projecTypeId" class="form-line">
+                                            <label for="id">Technology</label>
+                                            <select [(ngModel)]="project.projecTypeId['technogory']" formControlName="id" name="id" class="validate form-control"
+                                                placeholder="Technology" required>
+                                                <option value="1">Web</option>
+                                                <option value="2">Androi</option>
+                                                <option value="3">iOS</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" (click)="close()">
+                        Cance
+                    </button>
+                    <button class="btn btn-success waves-effect">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

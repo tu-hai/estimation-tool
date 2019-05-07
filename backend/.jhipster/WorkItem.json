@@ -1,0 +1,49 @@
+{
+    "name": "WorkItem",
+    "fields": [
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "actualeffort",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taskname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codingEffort",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "indates",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "assumption",
+            "otherEntityName": "assumption",
+            "otherEntityRelationshipName": "workItem"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "projectId",
+            "otherEntityName": "project",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "workItemId"
+        }
+    ],
+    "changelogDate": "20181211063440",
+    "entityTableName": "work_item",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

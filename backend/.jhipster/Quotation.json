@@ -1,0 +1,40 @@
+{
+    "name": "Quotation",
+    "fields": [
+        {
+            "fieldName": "projectId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "statDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "customerId",
+            "otherEntityName": "customer",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "projectID",
+            "otherEntityName": "project",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181211063438",
+    "entityTableName": "quotation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

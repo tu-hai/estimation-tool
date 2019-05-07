@@ -1,0 +1,99 @@
+<div bsModal #editCustumerModal="bs-modal"  class="modal fade">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active"  [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>{{ "Update Info" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                        <li class="active"><a href="#user-details" data-toggle="tab">Update a Custumer</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane animated fadeIn active">
+                                <div class="row clearfix" style="margin-top:10px;">
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <span><label for="name">Custumer Name</label></span>
+                                                    <input [(ngModel)]="customerList['name']" formControlName="name" id="name"  type="text" required maxlength="32" minlength="2" class="validate form-control" placeholder="Custumer Name" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <span><label for="company">Company</label></span>
+                                                    <input [(ngModel)]="customerList['company']" formControlName="company" id="company"  type="text" required maxlength="32" minlength="2" class="validate form-control" placeholder="Company Name" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row clearfix">
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <span><label for="email">Email</label></span>
+                                                    <input [(ngModel)]="customerList['email']" formControlName="email" id="company" type="email" name="mail"   pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$" class="validate form-control"placeholder="Email" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <span><label for="tel">Phone Number</label></span>
+                                                    <input [(ngModel)]="customerList['tel']" formControlName="tel" id="tel" type="number" name="Phone"  required maxlength="32" class="validate form-control"placeholder="Phone Number" required> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row clearfix">
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <span><label for="country">Country</label></span>
+                                                    <input [(ngModel)]="customerList['country']" formControlName="country" type="text" id="country" maxlength="32"  class="validate form-control" placeholder="Country" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <span><label for="billaddress">Bill Address</label></span>
+                                                    <input [(ngModel)]="customerList['billaddress']" formControlName="billaddress" type="text" id="billaddress" maxlength="32"  class="validate form-control" placeholder="Billaddress" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-sm-6">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <span><label for="skypeid">Skype id</label></span>
+                                                    <input [(ngModel)]="customerList['skypeid']" formControlName="skypeid" type="text" id="Skype" maxlength="32"  class="validate form-control" placeholder="skypeid" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-default waves-effect" (click)="close()">
+                                Cance
+                            </button>
+                            <button class="btn btn-success waves-effect">
+                                Save
+                            </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+#Table {
+    width: 100%;
+  }
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+.footer {
+  position: fixed;
+  bottom: 10%;
+  right: 50px;
+}

@@ -1,0 +1,57 @@
+<div bsModal #editQuotationModel="bs-modal" class="modal fade" tabindex="-1" aria-labelledby="createUserModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" [formGroup]="editForm" #creQuotation="ngForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{ "Edit Quotation" | localize }}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="col-sm-12" style="padding: 0px">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Task name</th>
+                                        <th>Coding Effort</th>
+                                        <th>Note</th>
+                                        <th>Assumption</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <div *ngFor="let item of quoctationById">
+                                        <tr>  <input matInput [(ngModel)]="item.id" formControlName="id" readonly></tr>  
+                                        <div formArrayName="wordItemDTOList" *ngFor="let items of item?.wordItemDTOList">
+                                            <tr *ngFor="let arr of formData.controls; let i = index" class="panel panel-default" [formGroupName]="i">
+                                                <td><input matInput [(ngModel)]="items.no" formControlName="no"></td>
+                                                <td><input matInput [(ngModel)]="items.taskName" placeholder="task name" formControlName="taskName"></td>
+                                                <td><input matInput [(ngModel)]="items.codingErffort"  placeholder="coding effort" formControlName="codingErffort"></td>
+                                                <td><input matInput [(ngModel)]="items.assumptionNote"  placeholder="note" formControlName="assumptionNote"></td>
+                                                <td><input matInput [(ngModel)]="items.assumptionConten" placeholder="assumption" formControlName="assumptionConten"></td>
+                                                <td><input matInput [(ngModel)]="items.indayte" placeholder="indayte" formControlName="indayte"></td>
+                                            </tr>
+                                        </div>
+                                    </div>
+                                </tbody>
+                            </table>
+                     </div>
+                  
+                    <div class="margin-20"  style="float: right">
+                            <button class="btn btn-warning" (click)="close()" style="cursor: default">
+                                Cance
+                            </button>
+                            <button [disabled]="creQuotation.invalid" class="btn btn-success save" type="submit" style="cursor: default">
+                                Save
+                            </button>
+                      </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

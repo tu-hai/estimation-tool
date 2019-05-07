@@ -1,0 +1,79 @@
+<div bsModal #createProjectModal="bs-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+            <form *ngIf="active" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>{{ "Create new Project" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs tab-nav-right">
+                        <li class="active"><a href="#user-details" data-toggle="tab">Add Project</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane animated fadeIn active" id="user-details">
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Name" formControlName="name" type="text" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                            <input matInput  [(ngModel)]="ds" placeholder="Date Start" formControlName="dateStrart" type="date" required>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <mat-form-field class="example-full-width">
+                                                <input matInput  [(ngModel)]="de" placeholder="Date End" formControlName="dateEnd" type="date" required>
+                                            </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <mat-form-field  formGroupName="sizeId" >
+                                        <mat-select placeholder="Size" formControlName="id" required>
+                                            <mat-option value="1">Small</mat-option>
+                                            <mat-option value="2">Medium</mat-option>
+                                            <mat-option value="3">Big</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-6">
+                                    <mat-form-field  formGroupName="projecTypeId">
+                                        <mat-select placeholder="Type" formControlName="id" required>
+                                            <mat-option value="1">Web</mat-option>
+                                            <mat-option value="2">Android</mat-option>
+                                            <mat-option value="3">iOS</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" (click)="close()">
+                        Cance
+                    </button>
+                    <button  [disabled]="addForm.invalid"  class="btn btn-success waves-effect">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+              <pre>{{addForm.value | json }}</pre>

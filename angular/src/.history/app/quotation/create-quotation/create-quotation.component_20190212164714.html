@@ -1,0 +1,121 @@
+<div bsModal #createQuotationModel="bs-modal" class="modal fade" tabindex="-1" aria-labelledby="createUserModal"
+    aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" [formGroup]="createForm" #creQuotation="ngForm"  #createQuotation (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{ "Add Quotation" | localize }}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="body table-responsive">
+                        <div class="col-sm-6">
+                            <mat-form-field>
+                                <mat-select  placeholder="Project" formControlName="projectID" required>
+                                    <mat-option *ngFor="let project of project" (click)="getWorkItemByProject(project.id)" [value]="project.id">
+                                        {{project.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-6">
+                            <mat-form-field>
+                                <mat-select placeholder="Custumer" formControlName="customerID" required>
+                                    <mat-option *ngFor="let custumer of custumer" [value]="custumer.id">
+                                        {{custumer.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                <div class="col-sm-12" style="padding: 0px">
+                    <div class="col-sm-5"  style="padding: 0px">
+                        <div formArrayName="listworkItem">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:70%">Task Name</th>
+                                            <th  style="width:30%">Hours</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody  *ngFor="let arr of formData.controls; let i = index" class="panel panel-default" [formGroupName]="i" >
+                                        <tr>
+                                            <td>
+                                                <input matInput placeholder="Task name" formControlName="taskname" required>
+                                            </td>
+                                            <td>
+                                                <input matInput placeholder="codingEffort" formControlName="codingEffort" type="number" required>  
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody *ngFor="let item of workItemByProject">
+                                            <tr >
+                                                    <td>
+                                                        <input matInput placeholder="taskname" [value]="item.taskName" formControlName="taskname">
+                                                    </td>
+                                                    <td>
+                                                        <input matInput placeholder="codingEffort" [value]="item.codingErffort" formControlName="codingEffort">
+                                                    </td>
+                                                </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-7" style="padding: 0px">
+                        <div formArrayName="assumptionList">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Assumption</th>
+                                        <th>Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let arr of formData.controls; let i = index" class="panel panel-default" [formGroupName]="i">
+                                    <tr *ngFor="let item of workItemByProject">
+                                        <td>
+                                            <input matInput placeholder="assumption" [value]="item.assumptionConten" formControlName="content" type="text">
+                                        </td>
+                                        <td>
+                                            <input matInput placeholder="note" [value]="item.assumptionNote" formControlName="note">
+                                        </td>  
+                                    </tr>
+                                    <tr >
+                                        <td>
+                                                <input matInput placeholder="assumption" formControlName="content" type="text">
+                                        </td>
+                                        <td>
+                                                <input matInput placeholder="note" formControlName="note">
+                                        </td>                             
+                                        <td>
+                                            <button style="padding: 0px; width: 20px" class="btn btn-danger" type="button" (click)="removeTask(i)">
+                                                x
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   </div>
+                    <div class="margin-20">
+                        <button class="btn btn-primary" type="button" (click)="addTask()" style="cursor: default">
+                           +
+                        </button>
+                        <button [disabled]="creQuotation.invalid" class="btn btn-success save" (click)="indexSelected" type="submit" style="cursor: default">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- <pre>Form Values: {{createForm.value | json}}</pre> -->

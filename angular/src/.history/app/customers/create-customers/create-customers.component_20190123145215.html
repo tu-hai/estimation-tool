@@ -1,0 +1,109 @@
+<div bsModal #createCustumerModal="bs-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active"[formGroup]="addForm" #createCustumer="ngForm" (ngSubmit)="onSubmit()">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span>{{ "Create Custumer" | localize }}</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                        <li class="active"><a href="#user-details" data-toggle="tab">Add Custumer</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane animated fadeIn active" id="user-details">
+
+                            <div class="row clearfix" style="margin-top:10px;">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <label for="name">Custumer Name</label>
+                                            <input formControlName="name" id="name" type="text" class="validate form-control"required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <label for="company">Company</label>
+                                            <input formControlName="company" id="company" type="text" class="validate form-control"required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <!-- <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <label for="tel">Phone</label>
+                                            <input formControlName="tel" type="number" id="tel" name="tel" class="validate form-control"required>
+                                        </div>
+                                    </div> -->
+                                    <form class="example-form">
+                                        <mat-form-field class="example-full-width">
+                                            <input formControlName="tel" type="number" id="tel" matInput placeholder="Telephone Number" class="validate form-control" required>
+                                        </mat-form-field>
+                                    </form>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line email">
+                                            <label for="email">Email</label>
+                                            <input formControlName="email" type="email" id="email" name="email" class="validate form-control"required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <form class="example-form">
+                                        <mat-form-field class="example-full-width">
+                                            <input type="text" placeholder="Country" aria-label="Number" matInput [formControl]="myControl"
+                                                [matAutocomplete]="auto">
+                                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                                    {{option}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                        </mat-form-field>
+                                    </form>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <label for="country">Bill address</label>
+                                            <input formControlName="billaddress" type="text" id="billaddress" class="validate form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <label for="skypeid">Skype</label>
+                                            <input formControlName="skypeid" type="text" id="skypeid" class="validate form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default waves-effect" (click)="close()">
+                        Cance
+                    </button>
+                    <button [disabled]="createCustumer.invalid" type="submit" class="btn btn-primary waves-effect">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
